@@ -6,3 +6,7 @@ def home(request):
 def posts_index(request):
     posts=[]
     return render(request, 'posts/index.html', {'posts': posts})
+
+def posts_detail(request, post_id):
+    post = []
+    return render(request, 'posts/detail.html', {'post': post})
