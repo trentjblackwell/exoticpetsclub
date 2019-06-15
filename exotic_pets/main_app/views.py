@@ -1,11 +1,19 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post
 
 class PostCreate(CreateView):
     model = Post
     fields = '__all__'
     success_url ='/posts/'
+
+class PostUpdate(UpdateView):
+    model = Post
+    fields = '__all__'
+
+class PostDelete(DeleteView):
+    model = Post
+    success_url = '/posts/'
 
 def home(request):
     return render(request, 'home.html')
