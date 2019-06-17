@@ -33,10 +33,11 @@ def posts_index(request):
     posts = Post.objects.all()
     return render(request, 'posts/index.html', {'posts': posts})
 
-@login_required
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-    return render(request, 'posts/detail.html', {'post': post})
+    user = request.user
+    print(user)
+    return render(request, 'posts/detail.html', {'post': post, 'user': user})
 
 @login_required
 def user_index(request):
@@ -49,6 +50,7 @@ def add_photo(request, post_id):
     if photo_file:
         s3 = boto3.client('s3')
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        print(photo_file)
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
