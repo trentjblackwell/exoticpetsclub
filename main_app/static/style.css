@@ -7,6 +7,7 @@ body {
 
   main {
     flex: 1 0 auto;
+    text-align:center;
   }
 
   .tealish {
@@ -18,11 +19,17 @@ body {
     margin-top: 100px;
   }
 
-  .slides {
-    height: 100%;
-  }
-
 
  .nav-logo img {
     height: 100%;
+  }
+
+  .login {
+    display: inline-block;
+    max-width: 500px;
+
+  }
+
+  #login-form {
+display: inline-block;
   }
