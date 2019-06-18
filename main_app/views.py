@@ -16,6 +16,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'description', 'price', 'contact']
     def form_valid(self, form):
         form.instance.user = self.request.user
+        print(form)
         return super().form_valid(form)
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
@@ -58,6 +59,17 @@ def add_photo(request, post_id):
             photo.save()
         except:
             print('An error occurred uploading file to S3')
+    return redirect('detail', post_id=post_id)
+
+def delete_photo(request, post_id, photo_id):
+    # start_pos captures index of item right after last slash 
+    # key slices url using start_pos, capturing the photo name
+    photo = Photo.objects.get(id=photo_id)
+    s3 = boto3.client('s3')
+    start_pos = photo.url.rfind('/') + 1
+    key = photo.url[start_pos:]
+    s3.delete_object(Bucket= 'catcollector5', Key=key)
+    Photo.objects.get(id=photo_id).delete()
     return redirect('detail', post_id=post_id)
 
 def signup(request):
