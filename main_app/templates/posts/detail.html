@@ -4,6 +4,8 @@
 <h1>Posts Details of Exotic Animals</h1>
 <h2>{{user}}</h2>
 
+<!-- post display -->
+
 <div class="card">
   <div class="card-content">
     <span class="card-title">{{ post.title }}</span>
@@ -13,8 +15,12 @@
       <a href="{% url 'posts_update' post.id %}">EDIT</a>
       <a href="{% url 'posts_delete' post.id %}">DELETE</a>
       {% endif %}
+    </div>
   </div>
 </div>
+
+
+
     {% for photo in post.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
       {% if post.user == user %}
@@ -29,11 +35,40 @@
       <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endfor %}
       {% if post.user == user %}
-    <form action="{% url 'add_photo' post.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-      {% csrf_token %}
-      <input type="file" name="photo-file">
-      <br><br>
-    <input type="submit" class="btn" value="Upload Photo">
-  </form>
+      <!-- photo form -->
+        <form action="{% url 'add_photo' post.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+          {% csrf_token %}
+          <input type="file" name="photo-file">
+          <br><br>
+          <input type="submit" class="btn" value="Upload Photo">
+        </form>
       {% endif %}
+
+<!-- comment display -->
+<!-- comment form -->
+
+<div class="card">
+  <div class="card-content">
+    <form action="{% url 'add_comment' post.id %}" method="post">
+      {% csrf_token %}
+      {{ comment_form.as_p }}
+      <input type="submit" class="btn" value="ADD COMMENT">
+    </form> 
+  </div>
+</div>
+
+{% for comment in post.comment_set.all %}
+<div class="card">
+  <div class="card-content">
+    <p>Comment: {{ comment.comment }}</p>
+    <p>{{ user }}</p>
+    <p>{{ comment.created }}</p>
+    <div class="card-action">
+        <a href="">EDIT</a>
+        <a href="">DELETE</a>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
 {% endblock %}
