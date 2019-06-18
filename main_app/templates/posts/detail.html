@@ -18,13 +18,8 @@
     {% for photo in post.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
       {% if post.user == user %}
-<<<<<<< HEAD
-      <a href="{% url 'delete_photo' post.id photo.id %}">DELETE PHOTO</a>
-    {% endif %}
-=======
         <a href="{% url 'delete_photo' post.id photo.id %}">DELETE PHOTO</a>
       {% endif %}
->>>>>>> 8655d8c80a07a3fd9539c8ff69b7917c67121bb8
     {% empty %}
       <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endfor %}
