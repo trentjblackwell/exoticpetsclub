@@ -10,13 +10,22 @@ body {
     text-align:center;
   }
 
+
+  .slider {
+ min-height: 100%;
+  }
+
+  .slides {
+    min-height: 100%;
+  }
+
   .tealish {
     background-color: #116070;
   }
 
   .landing-slider {
     min-height: 100%;
-    margin-top: 100px;
+    margin: auto;
   }
 
 
@@ -24,12 +33,11 @@ body {
     height: 100%;
   }
 
-  .login {
-    display: inline-block;
-    max-width: 500px;
-
-  }
-
   #login-form {
 display: inline-block;
   }
+
+  #post-form {
+  display: inline-block;
+  }
+  

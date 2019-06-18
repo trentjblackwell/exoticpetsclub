@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div>
 <div class ="slider fullscreeen landing-slider valign-wrapper">
 <ul class ="slides">
   <li>
                     <img class ="" src="https://www.cbc.ca/doczone/content/images/episodes/exoticpets_rules.jpg"> <!-- random image -->
-                    <div class="caption center-align">
+                    <div class="caption center-align" style="margin-top: 95px;">
                       <h3>Welcome to The Exotic Pets Club</h3>
-                      <h5 class="light grey-text"><a href="/">Join the club today!</a></h5>
+                      <h5 class="light grey-text"><a href="{% url 'signup' %}">Join the club today!</a></h5>
                     </div>
                   </li>
                   <li>
                     <img class="" src="https://www.thatsmyvet.com/images/hero/exotics.jpg"> <!-- random image -->
-                    <div class="caption center-align">
+                    <div class="caption center-align" style="margin-top: 95px;">
                       <h3>Have some spare animal friends?</h3>
-                      <h5 class="light grey-text"><a href="/">Create a new post here!</a></h5>
+                      <h5 class="light grey-text"><a href="{% url 'posts_create' %}">Create a new post here!</a></h5>
                     </div>
                   </li>
                 </ul>
                 </div>
+              </div>
                
 {% endblock %}

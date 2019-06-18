@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Sign Up</h1>
+
+<div class="card login">
+    <div class="transparent" id ="login-form">
+      <div>     
+<h4>Join The Exotic Pets Club today!</h4>
+      </div>
 
 {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
 <form method="post" action="{% url 'signup' %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" class="btn" value="signup">
+  <input type="submit" class="btn cyan" value="Join the Club!">
 </form>
+</div>
+</div>
 
 {% endblock %}
