@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Exotic Pets Search Results</h1>
+<h4>Search Results</h4>
 
-{% for post in object_list %}
-  <a href="{% url 'detail' post.id %}">
-    <div class="card">
-        <div class="card-content">
-          <p>Name: {{ post.title }}</p>
+
+<div class ="posts">
+    {% for post in object_list %}
+        <div class="card hoverable">
+            <a href=" {% url 'detail' post.id %} ">
+            <div class="card-content">
+                <span class="card-title">{{ post.title }}</span>
+                <h5>${{ post.price }}</h5>
+                <p>{{ post.description }}</p>
+            </div>
+            </a>
+            
         </div>
+    
+      
+    {% endfor %}
     </div>
-  </a>
-{% endfor %}
+
 {% endblock %}
+
