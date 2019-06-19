@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -8,9 +9,24 @@ from .models import Post, Photo, Comment
 from .forms import CommentForm
 import uuid
 import boto3
+from django.db.models import Q
+
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'catcollector5'
+
+class SearchResult(ListView):
+    model = Post
+    paginate_by = 10
+
+    def get_queryset(self):
+      query = self.request.GET.get('q')
+      object_list = Post.objects.filter(
+      Q(title__istartswith=query)
+      )
+      print(query)
+      print (object_list)
+      return object_list
 
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
