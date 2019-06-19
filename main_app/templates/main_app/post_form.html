@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="input-field">
-    <h2>Create a Listing</h2>
-        <div class="transparent" id ="post-form">
-<form action="" method="post">
-    {% csrf_token%}
+
+
+<div class="post-form">
+        <div id ="login-form">
+               
+            <h4>Create a Listing</h4>
+          
     
-    {{ form.as_p }}
-        <input type="submit" value="Submit!" class="btn">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      
+      <input type="submit" value="Submit!" class="btn">
     </form>
-</div>
-</div>
+          </div>
+        </div>
+      
 
 {% endblock %}

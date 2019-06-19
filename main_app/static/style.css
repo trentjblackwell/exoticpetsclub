@@ -8,12 +8,19 @@ body {
     min-height: 100vh;
     flex-direction: column;
     font-family: barlow;
+    background-image: url(https://thegardenvet.com/wp-content/uploads/2017/01/avian.jpg);
+    background-position: center;
+    background-attachment: fixed;
 }
 
   main {
     flex: 1 0 auto;
     text-align:center;
     height: 100%
+  }
+
+  input {
+    text-align: center;
   }
 
 
@@ -44,7 +51,39 @@ body {
 display: inline-block;
   }
 
+ .login div {
+   margin-top: 15vh;
+   margin-bottom: 15vh;
+   background: rgba(255, 255, 255, 0.6);
+   min-width: 33vw;
+   border-radius: 7px;
+   padding: 10px;
+ } 
+
+ .signup div {
+  background: rgba(255, 255, 255, 0.6);
+  min-width: 33vw;
+  border-radius: 7px;
+  margin: 15px;
+ }
+
+ .post-form div {
+  background: rgba(255, 255, 255, 0.8);
+  min-width: 50vw;
+  border-radius: 7px;
+  margin: 25px;
+ }
+
   #post-form {
   display: inline-block;
   }
   
+  .posts {
+    max-width: 600px;
+    display: inline-block;
+    
+  }
+
+  .posts div {
+    background: rgba(255, 255, 255, 0.6);
+  }

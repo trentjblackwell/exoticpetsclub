@@ -3,11 +3,11 @@
 
 
 <div class="login">
-    <div class="transparent" id ="login-form">
-      <div>      
+    <div id ="login-form">
+           
         <h4>Log In</h4>
-      </div>
-<div>
+      
+
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
   {{ form.as_p }}
@@ -21,5 +21,5 @@
       </div>
     </div>
   
-</div>
+
 {% endblock %}
