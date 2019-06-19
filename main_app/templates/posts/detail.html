@@ -66,8 +66,9 @@
     <p>{{ user }}</p>
     <p>{{ comment.created }}</p>
     <div class="card-action">
-        <a href="">EDIT</a>
+        {% if post.user == user %}
         <a href="{% url 'delete_comment' post.id comment.id %}">DELETE</a>
+        {% endif %}
     </div>
   </div>
 </div>
