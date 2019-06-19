@@ -24,15 +24,20 @@
             </div>
           </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><div class="nav-wrapper">
+            <li><a href="{% url 'post_list' %}" method="GET"><label class="label-icon" for="search"><i class="material-icons">search</i></label></a></li>
+            <li>
+                <div>
                 <form action="{% url 'post_list' %}" method="GET">
-                  <div class="input-field">
-                    <input id="search" type="search" name="q" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                
+                    <input class="search" id="search" type="search" name="q" required>
+                    
                     <i class="material-icons">close</i>
-                  </div>
+                  
                 </form>
-              </div></li>
+              </div>
+              </li>
+
+              
             <li><a href="{% url 'index' %}">Browse</a></li>
             {% if user.is_authenticated %}
             <a class='dropdown-trigger btn' href='#' data-target='dropdown1'><i class="large material-icons">person</i></a>
