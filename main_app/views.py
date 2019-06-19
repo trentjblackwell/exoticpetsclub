@@ -22,7 +22,7 @@ class SearchResult(ListView):
     def get_queryset(self):
       query = self.request.GET.get('q')
       object_list = Post.objects.filter(
-      Q(title__istartswith=query)
+      Q(title__icontains=query)
       )
       print(query)
       print (object_list)
