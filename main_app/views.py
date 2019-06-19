@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, Photo
+from .models import Post, Photo, Comment
 from .forms import CommentForm
 import uuid
 import boto3
@@ -85,6 +85,10 @@ def delete_photo(request, post_id, photo_id):
     key = photo.url[start_pos:]
     s3.delete_object(Bucket= 'catcollector5', Key=key)
     Photo.objects.get(id=photo_id).delete()
+    return redirect('detail', post_id=post_id)
+
+def delete_comment(request, post_id, comment_id):
+    Comment.objects.get(id=comment_id).delete()
     return redirect('detail', post_id=post_id)
 
 def signup(request):
