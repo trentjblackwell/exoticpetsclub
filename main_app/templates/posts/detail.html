@@ -49,24 +49,26 @@
 <!-- comment display -->
 <!-- comment form -->
 
+{% if user.is_authenticated %}
 <div class="card post-details">
   <div class="card-content">
-    <form action="{% url 'add_comment' post.id %}" method="post">
+    <form action="{% url 'add_comment' post.id user.id%}" method="post">
       {% csrf_token %}
       {{ comment_form.as_p }}
       <input type="submit" class="btn" value="ADD COMMENT">
     </form> 
   </div>
 </div>
+{% endif %}
 
 {% for comment in post.comment_set.all %}
 <div class="card">
   <div class="card-content">
     <p>Comment: {{ comment.comment }}</p>
-    <p>{{ user }}</p>
+    <p>{{ comment.user }}</p>
     <p>{{ comment.created }}</p>
     <div class="card-action">
-        {% if post.user == user %}
+        {% if comment.user == user %}
         <a href="{% url 'delete_comment' post.id comment.id %}">DELETE</a>
         {% endif %}
     </div>
