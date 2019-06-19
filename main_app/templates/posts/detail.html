@@ -67,7 +67,7 @@
     <p>{{ comment.created }}</p>
     <div class="card-action">
         <a href="">EDIT</a>
-        <a href="">DELETE</a>
+        <a href="{% url 'delete_comment' post.id comment.id %}">DELETE</a>
     </div>
   </div>
 </div>
