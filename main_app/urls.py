@@ -13,5 +13,6 @@ urlpatterns = [
     path('posts/<int:post_id>/add_comment/', views.add_comment, name='add_comment'),
     path('posts/<int:post_id>/comments/<int:comment_id>/delete_comment/', views.delete_comment, name='delete_comment'),
     path('accounts/signup', views.signup, name='signup'),
-    path('accounts/user_posts', views.user_index, name='user_index')
+    path('accounts/user_posts', views.user_index, name='user_index'),
+    path('search/', views.SearchResult.as_view(), name='post_list'),
     ]   
