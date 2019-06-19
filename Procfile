@@ -1,1 +1,1 @@
-web: gunicorn exoticpetsclub.wsgi
+web: gunicorn exotic_pets.wsgi
