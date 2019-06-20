@@ -35,7 +35,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = '__all__'
+    fields = ['title', 'description', 'price', 'contact']
 
 class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
