@@ -5,11 +5,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from .models import Post, Photo, Comment
 from .forms import CommentForm
 import uuid
 import boto3
-from django.db.models import Q
 
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -24,8 +24,6 @@ class SearchResult(ListView):
       object_list = Post.objects.filter(
       Q(title__icontains=query)
       )
-      print(query)
-      print (object_list)
       return object_list
 
 class PostCreate(LoginRequiredMixin, CreateView):
@@ -33,7 +31,6 @@ class PostCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'description', 'price', 'contact']
     def form_valid(self, form):
         form.instance.user = self.request.user
-        print(form)
         return super().form_valid(form)
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
@@ -55,10 +52,8 @@ def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     user = request.user
     comment_form = CommentForm()
-    print(user)
     return render(request, 'posts/detail.html', {
         'post': post, 
-        # 'user': user,
         'comment_form': comment_form,
         })
 
@@ -67,7 +62,7 @@ def user_index(request):
     posts = Post.objects.filter(user=request.user)
     return render(request, 'main_app/user_index.html', {'posts': posts})
 
-
+@login_required
 def add_comment(request, post_id, user_id):
     form = CommentForm(request.POST)
     if form.is_valid():
@@ -93,6 +88,7 @@ def add_photo(request, post_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', post_id=post_id)
 
+@login_required
 def delete_photo(request, post_id, photo_id):
     # start_pos captures index of item right after last slash 
     # key slices url using start_pos, capturing the photo name
@@ -104,6 +100,7 @@ def delete_photo(request, post_id, photo_id):
     Photo.objects.get(id=photo_id).delete()
     return redirect('detail', post_id=post_id)
 
+@login_required
 def delete_comment(request, post_id, comment_id):
     Comment.objects.get(id=comment_id).delete()
     return redirect('detail', post_id=post_id)
