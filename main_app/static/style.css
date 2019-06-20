@@ -56,8 +56,9 @@ display: inline-block;
    margin-bottom: 15vh;
    background: rgba(255, 255, 255, 0.6);
    min-width: 33vw;
+   max-width: 40vw;
    border-radius: 7px;
-   padding: 10px;
+   padding: 40px;
  } 
 
  .signup div {
@@ -87,3 +88,9 @@ display: inline-block;
   .posts div {
     background: rgba(255, 255, 255, 0.6);
   }
+
+  .posts:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  
