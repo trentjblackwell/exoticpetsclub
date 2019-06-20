@@ -4,12 +4,12 @@
 
 
 <div class="post-form">
-        <div id ="login-form">
+        <div id ="post-form">
                
             <h4>Create a Listing</h4>
           
     
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" action="{% url 'posts_create' %}">
       {% csrf_token %}
       {{ form.as_p }}
       
