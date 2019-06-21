@@ -102,7 +102,7 @@ display: inline-block;
   }
 
   .post-details div {
-    max-width: 70vw;
+    max-width: 50vw;
     min-width: 50vw;
     display: inline-block;
     background: rgba(255, 255, 255, 1.0);
