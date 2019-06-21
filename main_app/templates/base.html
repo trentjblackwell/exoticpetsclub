@@ -35,11 +35,12 @@
               </div>
               </li>
 
-              
+          
             <li><a href="{% url 'index' %}">Browse</a></li>
             {% if user.is_authenticated %}
             <a class='dropdown-trigger btn' href='#' data-target='dropdown1'><i class="large material-icons">person</i></a>
             <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#">Welcome {{user.username}}! </a></li>
             <li><a href="{% url 'user_index' %}">My Posts</a></li>
             <li><a href="{% url 'posts_create' %}">New Post</a></li>
             <li><a href="{% url 'logout' %}">Sign Out</a></li>
@@ -52,24 +53,28 @@
             <li><a href="{% url 'login' %}">Sign In</a></li>
             {% endif %}
           </ul>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
       </nav> 
-      <ul id="slide-out" class="sidenav">
-          <li><div class="user-view">
-            <div class="background">
-              <img src="images/office.jpg">
-            </div>
-            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-            <a href="#name"><span class="white-text name">John Doe</span></a>
-            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-          </div></li>
-          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-          <li><a href="#!">Second Link</a></li>
-          <li><div class="divider"></div></li>
-          <li><a class="subheader">Subheader</a></li>
-          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+      
+      
+      
+      <ul id="slide-out" class="sidenav show-on-medium-and-down cyan lighten-2">
+         
+          {% if user.is_authenticated %}
+          
+          <li><a href="#">Welcome {{user.username}}! </a></li>
+          <li><a href="{% url 'user_index' %}">My Posts</a></li>
+          <li><a href="{% url 'posts_create' %}">New Post</a></li>
+          <li><a href="{% url 'logout' %}">Sign Out</a></li>
+          
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          {% else %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Sign In</a></li>
+          {% endif %}
+        </ul>
+        
             
     </header>
     <main>

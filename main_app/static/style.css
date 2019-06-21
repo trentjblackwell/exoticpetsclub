@@ -93,4 +93,32 @@ display: inline-block;
     background: rgba(255, 255, 255, 0.9);
   }
 
-  
+  .post-details {
+    max-width: 70vw;
+    min-width: 50vw;
+    display: inline-block;
+    background: rgba(255, 255, 255, 1.0);
+    
+  }
+
+  .post-details div {
+    max-width: 70vw;
+    min-width: 50vw;
+    display: inline-block;
+    background: rgba(255, 255, 255, 1.0);
+    
+  }
+
+  .comments {
+    max-width: 70vw;
+    background: rgba(255, 255, 255, 1.0);
+    display: inline-block;
+  }
+
+  .slides .caption {
+background: rgba(255, 255, 255, 0.8);
+  }
+
+  h3 {
+    color: black;
+  }
