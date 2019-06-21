@@ -6,11 +6,11 @@ For more information contact <h6>{{post.contact}}</h6>
 
 
 <!-- post display -->
-
+{% if post.user == user %}
 <div class="card">
   <div class="card-content">
+    
     <div class="card-action">
-      {% if post.user == user %}
       <a href="{% url 'posts_update' post.id %}">EDIT POST</a>
       <a href="{% url 'posts_delete' post.id %}">DELETE POST</a>
       {% endif %}
@@ -70,8 +70,8 @@ For more information contact <h6>{{post.contact}}</h6>
     <h6>{{ comment.comment }}</h6>
    by: <p>{{ comment.user }} on 
     {{ comment.created }}</p>
+    {% if comment.user == user %}
     <div class="card-action">
-        {% if comment.user == user %}
         <a href="{% url 'delete_comment' post.id comment.id %}">DELETE</a>
         {% endif %}
     </div>
