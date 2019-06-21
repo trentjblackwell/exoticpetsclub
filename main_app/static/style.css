@@ -56,7 +56,7 @@ display: inline-block;
    margin-bottom: 15vh;
    background: rgba(255, 255, 255, 0.6);
    min-width: 33vw;
-   max-width: 40vw;
+   max-width: 500px;
    border-radius: 7px;
    padding: 40px;
  } 
